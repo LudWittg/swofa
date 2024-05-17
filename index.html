@@ -359,8 +359,7 @@
                 return data.values.map(row => row[0]);
             } catch (error) {
                 console.error('Error:', error);
-                const errorOutput = document.getElementById('loadingOverlay');
-                errorOutput.innerText = `Sorry, reload the page :( ${error.message}`;
+                output.innerText = error.message;
                 return [];
             }
         }
