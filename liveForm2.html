@@ -1574,8 +1574,10 @@
 
         async function fetchGoogleSheetsDataImpl1() {
             const flatUtil = (row) => {
-                const valueC = row[0]; // Column C
-                const valueD = row[1]; // Column D
+                // Column C
+                const valueC = row[0];
+                // Column D
+                const valueD = row[1];
                 return valueC ? valueC : valueD;
             };
             try {
