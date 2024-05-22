@@ -1588,7 +1588,6 @@
                     //throw new Error('No data found in the sheet.');
                     return [];
                 }
-                //return data.values.map(row => flatUtil(row));
                 // Use reduce to filter out duplicates based on the third element
                 const { uniqueValues } = data.values.reduce((acc, row) => {
                     const email = row[2];
