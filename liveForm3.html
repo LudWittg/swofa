@@ -1621,7 +1621,7 @@
                         return [];
                     }
                     //return data.values.map(row => row[0]);
-                    return data;
+                    return data.values;
                 } catch (error) {
                     console.error('Error:', error);
                     //output.innerText += error.message;
@@ -1638,7 +1638,7 @@
                 ]);
                 const data = data1.concat(data2);
                 // Use reduce to filter out duplicates based on the third element
-                const { uniqueValues } = data.values.reduce((acc, row) => {
+                const { uniqueValues } = data.reduce((acc, row) => {
                     const name = row[0];
                     const email = row[1];
                     if (!acc.seen.has(email)) {
