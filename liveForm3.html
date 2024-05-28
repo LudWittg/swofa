@@ -1629,13 +1629,26 @@
             }
 
             try {
-                const url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1VLjBrsP1KVB-ORaEVCMGra36VZtD42N2h7Rq2lmWIGA/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                const url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1N5S48-wzVV1x1L191H8-ztF0pRfl7j229XCyXuOuKjA/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
+                const url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1VLjBrsP1KVB-ORaEVCMGra36VZtD42N2h7Rq2lmWIGA/values/B2:C?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
+                const url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1N5S48-wzVV1x1L191H8-ztF0pRfl7j229XCyXuOuKjA/values/B2:C?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
                 const [data1, data2] = await Promise.all([
                     fetchGoogleSheetsDataUtil(url1),
                     fetchGoogleSheetsDataUtil(url2)
                 ]);
-                return data1.concat(data2);;
+                const data = data1.concat(data2);
+                // Use reduce to filter out duplicates based on the third element
+                const { uniqueValues } = data.values.reduce((acc, row) => {
+                    const name = row[0];
+                    const email = row[1];
+                    if (!acc.seen.has(email)) {
+                        acc.seen.add(email);
+                        acc.uniqueValues.push(name);
+                    }
+                    return acc;
+                }, { seen: new Set(), uniqueValues: [] });
+                return uniqueValues;
+                // Apply flatUtil to the first two elements (Name in english or Italian) and discard the third element
+                //return uniqueValues.map(row => flatUtil([row[0], row[1]]));
             } catch (error) {
                 console.error('Error fetching spreadsheets:', error);
                 return [];
