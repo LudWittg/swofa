@@ -1620,7 +1620,8 @@
                         //throw new Error(`No data found in sheet ${url}`);
                         return [];
                     }
-                    return data.values.map(row => row[0]);
+                    //return data.values.map(row => row[0]);
+                    return data;
                 } catch (error) {
                     console.error('Error:', error);
                     //output.innerText += error.message;
