@@ -15,13 +15,6 @@
             --background-play: paused;
             --bg-vibration-repetition: 0;
             --bg-svg-size: min(5vh, 5vw);
-            --lst-wrapper-hi: min(27vh, 27vw);
-            --lst-wrapper-wd: min(50vh, 50vw);
-            --lever-wd: max(10vh, 10vw);
-            --lever-hi: max(2vh, 2vw);
-            --lever-ball-radius: max(3vh, 3vw);
-            --lst-row-hi: min(9vh, 9vw);
-            --lst-font-size: min(2.4vh, 2.4vw);
         }
 
         body,
@@ -34,8 +27,8 @@
 
         .container {
             position: relative;
-            width: min(100vh, 100vw);
-            height: min(100vh, 100vw);
+            width: 50vh;
+            height: 100vh;
         }
 
         .slot-machine {
@@ -44,17 +37,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('pisa1.webp') no-repeat center center;
+            background: url('pisa.webp') no-repeat center center;
             background-size: cover;
         }
 
         .list-wrapper {
-            height: var(--lst-wrapper-hi);
-            width: var(--lst-wrapper-wd);
+            height: 15vh;/*120px;*/
+            width: 28vh;/*214px;*/
             /*margin-top: 40px;*/
             position: absolute;
-            top: 58%;
-            /*50%;*/
+            top: 55%;/*50%;*/
             left: 50%;
             transform: translate(-50%, -50%);
             overflow: hidden;
@@ -71,16 +63,12 @@
             transition: transform 2s ease-in-out;
             display: grid;
             justify-content: center;
-            font-size: var(--lst-font-size);
+            font-size: 2.4vh;
         }
 
         #list li {
-            height: var(--lst-row-hi);
-            line-height: var(--lst-row-hi);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-align: center;
+            height: 5vh;/*40px;*/
+            line-height: 5vh;
         }
 
         #loadingOverlay {
@@ -100,16 +88,17 @@
 
         .lever-container {
             position: absolute;
-            top: 71.3%;
-            transform: translateX(min(76vw, 76vh));
+            top: 61.8%;
+            right: 0;
+            /*transform: translateY(-50%);*/
         }
 
         .lever {
             display: flex;
             padding: 0;
             border: none;
-            width: var(--lever-wd);
-            height: var(--lever-hi);
+            width: 10vh;/*100px;*/
+            height: 2vh;/*20px;*/
             background: #333;
             border-radius: 10px;
             position: relative;
@@ -122,15 +111,13 @@
 
         .lever::before {
             content: '';
-            width: var(--lever-ball-radius);
-            height: var(--lever-ball-radius);
+            width: 3vh;/*30px;*/
+            height: 3vh;/*30px;*/
             background: red;
             border-radius: 50%;
             position: absolute;
-            left: 90%;
-            /*px*/
-            top: -25%;
-            /*px*/
+            left: 90%;/*px*/
+            top: -25%;/*px*/
             box-shadow: inset 2px -4px 5px #00000082;
         }
 
@@ -155,12 +142,11 @@
 
         #redBackground {
             background-color: rgba(255, 0, 0, 0.3);
-            height: var(--lst-row-hi);
-            width: var(--lst-wrapper-wd);
+            height: 5vh;/*40px;*/
+            width: 28vh;/*214px;*/
             position: absolute;
-            margin-top: var(--lst-row-hi);
+            margin-top: 10vh;/*80px;*/
             z-index: 1;
-            pointer-events: none;
         }
 
         @keyframes scrollAnimation {
@@ -186,8 +172,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 100%;
         }
 
         .medallion-container {
@@ -203,14 +187,14 @@
 
         .medallion {
             cursor: pointer;
-            min-width: var(--lst-wrapper-wd);
+            min-width: 30vh;/*200px;*/
             aspect-ratio: 1;
             border-radius: 50%;
             background-color: goldenrod;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: max(2.4vw,2.4vh);
+            font-size: 2.5vh;/*24px;*/
             font-weight: bold;
             color: #fff;
             animation: rotofall 3s linear 1;
@@ -219,22 +203,15 @@
             border-style: double;
             border-width: 10px;
             box-shadow: 5px 10px 5px #55400d9e;
-            word-wrap: anywhere;
-            white-space: normal;
-            max-width: 80vw;
-            max-height: 80vh;
-            padding: max(1.2vw,1.2vh);
         }
 
         @keyframes rotofall {
             0% {
                 transform: translateY(-50vh) rotateX(90deg);
             }
-
             33% {
                 transform: rotateX(360deg);
             }
-
             100% {
                 transform: translateY(0);
             }
@@ -244,7 +221,6 @@
             from {
                 transform: translateY(0);
             }
-
             to {
                 transform: translateY(-100vh);
             }
@@ -267,7 +243,6 @@
             0% {
                 transform: translateY(-100vh) rotateZ(0deg);
             }
-
             100% {
                 transform: translateY(100vh) rotateZ(360deg);
             }
@@ -293,8 +268,6 @@
         .background-container {
             position: absolute;
             z-index: 0;
-            opacity: 0.8;
-            pointer-events: none;
         }
 
         @keyframes vibrate {
@@ -324,8 +297,6 @@
         }
 
         .winners-container {
-            margin-top: 10vh;
-            /*margin-top: calc(110vh - min(100vh,100vw));*/
             position: absolute;
             background-color: #ffffffd4;
             z-index: 2;
@@ -333,7 +304,6 @@
             align-items: center;
             display: flex;
             flex-direction: column;
-            font-size: var(--lst-font-size);
         }
 
         .winners-container h1 {
@@ -1463,10 +1433,10 @@
     </div>
     <div class="interactionContainer">
         <div id="loadingOverlay">Loading...</div>
+        <div id="redBackground"></div>
         <div class="container">
             <div class="slot-machine"></div>
             <div id="list-wrapper" class="list-wrapper">
-                <div id="redBackground"></div>
                 <div id="gradient-overlay">
                     <ul id="list">
                         <!-- List items will be dynamically populated from a Google Sheet -->
@@ -1480,12 +1450,12 @@
     </div>
     <div class="winners-container">
         <h1>The winners are...</h1>
-        <ul id="winners-list"></ul>
+        <ul id="winners-list"></ul>    
     </div>
 
     <div class="medallion-container" id="medallionContainer" onclick="stopCelebration(this)">
         <div class="medallion" id="medallion"></div>
-        <!--div class="confetti-container">
+        <div class="confetti-container">
             <div class="confetti" style="--color: #fbbc05; --duration: 2s; left: 2%;"></div>
             <div class="confetti" style="--color: #ea4335; --duration: 1.7s; left: 4%;"></div>
             <div class="confetti" style="--color: #34a853; --duration: 2.3s; left: 6%;"></div>
@@ -1547,7 +1517,7 @@
             <div class="confetti" style="--color: #fbbc05; --duration: 3.7s; left: 96%;"></div>
             <div class="confetti" style="--color: #ea4335; --duration: 4.0s; left: 98%;"></div>
             <div class="confetti" style="--color: #34a853; --duration: 4.6s; left: 100%;"></div>
-        </div-->
+        </div>
     </div>
 
 
@@ -1569,108 +1539,36 @@
             list.classList.add('animationUtil');
             await delay(2000);
             list.classList.remove('animationUtil');
-            // From the initial position of list, move downward `stopIndex` times,
-            // i.e., the number of items between the first child and the winner,
-            // by one item height. Move upward by another `--lst-row-hi`
-            // to center the element.
-            // Spin the "wheel of names" by adding the translation to list's style.
-            list.style.transform = `translateY(calc(${-stopIndex + 1} * var(--lst-row-hi))`;
+            // From the initial position of list, move downward by one item
+            // height, `40px` (cfr. the CSS at #list li), times `stopIndex`,
+            // i.e., the number of items between the first child and the winner.
+            // Move upward by anoter 40px to center the element.
+            const translateY = (-5 * stopIndex) + 5;
+            // Spin the wheel of names adding the translation to list's style
+            list.style.transform = `translateY(${translateY}vh)`;
         }
 
         async function fetchGoogleSheetsData() {
-            return await fetchGoogleSheetsDataImpl2();
-        }
-
-        async function fetchGoogleSheetsDataImpl1() {
-            const flatUtil = (row) => {
-                // Column C
-                const valueC = row[0];
-                // Column D
-                const valueD = row[1];
-                return valueC ? valueC : valueD;
-            };
             try {
-                const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1xOcdthJd9MWtceiHpdSkCMNy6aJSq08RoeuABHxU3iY/values/C2:E?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg');
+                const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1jM8DKjXs_QaYiGYit2Mrr1AC93xvGTF7M3A0HUE0dIU/values/A:A?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg');
+                //'https://sheets.googleapis.com/v4/spreadsheets/1VLjBrsP1KVB-ORaEVCMGra36VZtD42N2h7Rq2lmWIGA/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg');
                 if (!response.ok) {
                     throw new Error('HTTP error, status = ' + response.status);
                 }
                 const data = await response.json();
                 if (!data.values) {
-                    //throw new Error('No data found in the sheet.');
-                    return [];
+                    throw new Error('No data found in the sheet.');
                 }
-                // Use reduce to filter out duplicates based on the third element
-                const { uniqueValues } = data.values.reduce((acc, row) => {
-                    const email = row[2];
-                    if (!acc.seen.has(email)) {
-                        acc.seen.add(email);
-                        acc.uniqueValues.push(row);
-                    }
-                    return acc;
-                }, { seen: new Set(), uniqueValues: [] });
-                // Apply flatUtil to the first two elements (Name in english or Italian) and discard the third element
-                return uniqueValues.map(row => flatUtil([row[0], row[1]]));
+                return data.values.map(row => row[0]);
             } catch (error) {
                 console.error('Error:', error);
-                //output.innerText = error.message;
-                return [];
-            }
-        }
-
-        async function fetchGoogleSheetsDataImpl2() {
-            async function fetchGoogleSheetsDataUtil(url) {
-                try {
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error at ${url}, status = ${response.status}`);
-                    }
-                    const data = await response.json();
-                    if (!data.values) {
-                        //throw new Error(`No data found in sheet ${url}`);
-                        return [];
-                    }
-                    //return data.values.map(row => row[0]);
-                    return data.values;
-                } catch (error) {
-                    console.error('Error:', error);
-                    //output.innerText += error.message;
-                    throw error;
-                }
-            }
-
-            try {
-                // const url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1VLjBrsP1KVB-ORaEVCMGra36VZtD42N2h7Rq2lmWIGA/values/B2:C?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                // const url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1N5S48-wzVV1x1L191H8-ztF0pRfl7j229XCyXuOuKjA/values/B2:C?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                const url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1SjQKbTEnpe-_H5d_JlrQdUgAzk94a0u4mSh4753hvz8/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                const url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1_vRlREw6s7nYBQPa2KmPiiaIS_MEbYn9c-yat0Mdfxs/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                //const url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1bxE8wWPAL_5-mAr8LxM3VvZFypI4IFEybrBlq0YzCM8/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                //const url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1WUA4--8C51VJLdwWpoL9DGnkVSS1K2vAN0cdA7LeI1I/values/B2:B?key=AIzaSyDBXlzqamdq7oB6VFpHfr5bLA2Rj9jA5mg';
-                const [data1, data2] = await Promise.all([
-                    fetchGoogleSheetsDataUtil(url1),
-                    fetchGoogleSheetsDataUtil(url2)
-                ]);
-                const data = data1.concat(data2);
-                // Use reduce to filter out duplicates based on the third element
-                const { uniqueValues } = data.reduce((acc, row) => {
-                    //const name = row[0];
-                    const email = row[0];
-                    if (!acc.seen.has(email)) {
-                        acc.seen.add(email);
-                        acc.uniqueValues.push(email);
-                    }
-                    return acc;
-                }, { seen: new Set(), uniqueValues: [] });
-                return uniqueValues;
-                // Apply flatUtil to the first two elements (Name in english or Italian) and discard the third element
-                //return uniqueValues.map(row => flatUtil([row[0], row[1]]));
-            } catch (error) {
-                console.error('Error fetching spreadsheets:', error);
+                output.innerText = error.message;
                 return [];
             }
         }
 
         function setNameSpinningDuration(itemsLen) {
-            document.documentElement.style.setProperty('--animation-duration', `${0.01 * itemsLen}s`);
+            document.documentElement.style.setProperty('--animation-duration', `${0.002 * itemsLen}s`);
         }
 
         async function addWinner(winners, name, medallionContainer, medallion) {
