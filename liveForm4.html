@@ -77,6 +77,10 @@
         #list li {
             height: var(--lst-row-hi);
             line-height: var(--lst-row-hi);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
         }
 
         #loadingOverlay {
@@ -206,7 +210,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: var(--lst-font-size);
+            font-size: max(2.4vw,2.4vh);
             font-weight: bold;
             color: #fff;
             animation: rotofall 3s linear 1;
@@ -215,6 +219,11 @@
             border-style: double;
             border-width: 10px;
             box-shadow: 5px 10px 5px #55400d9e;
+            word-wrap: anywhere;
+            white-space: normal;
+            max-width: 80vw;
+            max-height: 80vh;
+            padding: max(1.2vw,1.2vh);
         }
 
         @keyframes rotofall {
